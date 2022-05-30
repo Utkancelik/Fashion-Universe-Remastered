@@ -36,8 +36,9 @@ public class BuyManager : MonoBehaviour
 
     public void UnlockReyon()
     {
-        if (PlayerTriggerEventManager.unlockedArea != null)
+        if (PlayerTriggerEventManager.unlockedArea != null && PlayerTriggerEventManager.unlockedArea.enabled)
         {
+            Debug.Log("TEST");
             if (totalMoney >= 1)
             {
                 PlayerTriggerEventManager.unlockedArea.Unlock(1);
