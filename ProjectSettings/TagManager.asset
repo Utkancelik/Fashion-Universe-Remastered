@@ -11,6 +11,7 @@ TagManager:
   - PayArea
   - DoorArea
   - TakeMoneyArea
+  - UnlockArea
   layers:
   - Default
   - TransparentFX

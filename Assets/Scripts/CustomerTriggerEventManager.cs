@@ -48,7 +48,8 @@ public class CustomerTriggerEventManager : MonoBehaviour
         }
         if (other.gameObject.CompareTag("DoorArea"))
         {
-            Destroy(gameObject);
+            CustomerGenerator customerGenerator = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CustomerGenerator>();
+            customerGenerator.DieCustomer(gameObject);
         }
     }
     private void OnTriggerExit(Collider other)

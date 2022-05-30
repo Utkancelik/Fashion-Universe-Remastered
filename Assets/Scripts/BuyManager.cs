@@ -11,11 +11,19 @@ public class BuyManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerTriggerEventManager.OnMoneyCollect += IncreaseMoney;
+        PlayerTriggerEventManager.OnUnlockReyon += UnlockReyon;
     }
 
     private void OnDisable()
     {
         PlayerTriggerEventManager.OnMoneyCollect -= IncreaseMoney;
+        PlayerTriggerEventManager.OnUnlockReyon -= UnlockReyon;
+    }
+
+    private void Update()
+    {
+        moneyText.text = totalMoney.ToString();
+
     }
 
     public void IncreaseMoney()
@@ -23,7 +31,19 @@ public class BuyManager : MonoBehaviour
         PayAreaManager payAreaManager = GetComponentInParent<PayAreaManager>();
         int moneyAmount = payAreaManager.moneyList.Count;
         totalMoney += moneyAmount * 5;
-        moneyText.text = totalMoney.ToString();
         payAreaManager.DestroyMoney();
+    }
+
+    public void UnlockReyon()
+    {
+        if (PlayerTriggerEventManager.unlockedArea != null)
+        {
+            if (totalMoney >= 1)
+            {
+                PlayerTriggerEventManager.unlockedArea.Unlock(1);
+                totalMoney -= 1;
+            }
+            
+        }
     }
 }

@@ -17,6 +17,10 @@ public class PlayerTriggerEventManager : MonoBehaviour
     public delegate void OnMoneyCollectArea();
     public static event OnMoneyCollectArea OnMoneyCollect;
 
+    public delegate void OnUnlockNewReyon();
+    public static event OnUnlockNewReyon OnUnlockReyon;
+    public static UnlockNewReyon unlockedArea;
+
     public Slider circleSlider;
     private void Start()
     {
@@ -82,12 +86,18 @@ public class PlayerTriggerEventManager : MonoBehaviour
             isGiving = true;
             reyonManager = other.gameObject.GetComponent<ReyonManager>();
         }
+        if (other.gameObject.CompareTag("UnlockArea"))
+        {
+            OnUnlockReyon();
+            unlockedArea = other.gameObject.GetComponent<UnlockNewReyon>();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("TakeMoneyArea"))
         {
             OnMoneyCollect();
+
         }
     }
     private void OnTriggerExit(Collider other)
