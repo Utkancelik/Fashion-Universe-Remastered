@@ -15,8 +15,9 @@ public class CustomerGenerator : MonoBehaviour
     {
         while (true) 
         {
-            yield return new WaitForSeconds(5);
-            if (customerList.Count < 3)
+            
+            yield return new WaitForSeconds(3);
+            if (customerList.Count < GameObject.FindGameObjectsWithTag("ReyonArea").Length)
             {
                 GameObject temp = Instantiate(customerPrefab);
                 temp.transform.position = new Vector3(spawnPoint.position.x + customerList.Count, spawnPoint.position.z, spawnPoint.position.z);

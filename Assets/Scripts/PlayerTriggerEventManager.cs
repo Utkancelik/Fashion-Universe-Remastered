@@ -11,7 +11,7 @@ public class PlayerTriggerEventManager : MonoBehaviour
 
     public delegate void OnReyonArea();
     public static event OnReyonArea OnPurseGive;
-    public static ReyonManager reyonManager;
+    public ReyonManager reyonManager;
     public bool isGiving;
 
     public delegate void OnMoneyCollectArea();
@@ -37,11 +37,12 @@ public class PlayerTriggerEventManager : MonoBehaviour
             {
                 
             */
+            yield return new WaitForSeconds(0.5f);
             if (isGiving)
             {
                 OnPurseGive();       
             }
-            yield return new WaitForSeconds(1);
+            
             
         }
     }
@@ -85,6 +86,7 @@ public class PlayerTriggerEventManager : MonoBehaviour
         {
             isGiving = true;
             reyonManager = other.gameObject.GetComponent<ReyonManager>();
+            reyonManager.purseNumText.gameObject.SetActive(true);
         }
         if (other.gameObject.CompareTag("UnlockArea"))
         {
@@ -111,7 +113,8 @@ public class PlayerTriggerEventManager : MonoBehaviour
         if (other.gameObject.CompareTag("ReyonArea"))
         {
             isGiving = false;
-            reyonManager = null;
+            reyonManager.purseNumText.gameObject.SetActive(false);
+            //reyonManager = null;
 
         }
     }

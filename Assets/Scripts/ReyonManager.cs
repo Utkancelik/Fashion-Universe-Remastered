@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ReyonManager : MonoBehaviour
 {
@@ -9,8 +10,13 @@ public class ReyonManager : MonoBehaviour
     public Transform reyonPoint;
     public int purseLimit = 3;
     public bool aimed;
-    public void GetPurse()
+    public Text purseNumText;
+    private void Start()
     {
+        purseNumText.gameObject.SetActive(false);
+    }
+    public void GetPurse()
+    {          
         GameObject temp = Instantiate(pursePrefab, reyonPoint);
         temp.transform.position = new Vector3(reyonPoint.position.x, reyonPoint.position.y, reyonPoint.position.z + (float)purseList.Count / 2);
         purseList.Add(temp);
@@ -22,6 +28,11 @@ public class ReyonManager : MonoBehaviour
             Destroy(purseList[purseList.Count - 1]);
             purseList.RemoveAt(purseList.Count - 1);
         }
+    }
+
+    private void Update()
+    {
+        purseNumText.text = purseList.Count.ToString() + "/" + purseLimit;
     }
 
 

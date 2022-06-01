@@ -6,7 +6,7 @@ public class CustomerTriggerEventManager : MonoBehaviour
 {
     public delegate void OnPurseTakeArea();
     public event OnPurseTakeArea OnPurseTake;
-    public static ReyonManager reyonManager;
+    public ReyonManager reyonManager;
     public bool isTaking;
 
     public delegate void OnPurseGiveArea();
@@ -57,6 +57,7 @@ public class CustomerTriggerEventManager : MonoBehaviour
         if (other.gameObject.CompareTag("ReyonArea"))
         {
             isTaking = false;
+            reyonManager.aimed = false;
             reyonManager = null;
         }
         if (other.gameObject.CompareTag("PayArea"))

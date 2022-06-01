@@ -25,14 +25,15 @@ public class CustomerManager : MonoBehaviour
 
     public void GetPurse()
     {
-        if (purseList.Count < purseLimit && CustomerTriggerEventManager.reyonManager.purseList.Count > 0)
+        CustomerTriggerEventManager customerTriggerEventManager = GetComponent<CustomerTriggerEventManager>();
+        if (purseList.Count < purseLimit && customerTriggerEventManager.reyonManager.purseList.Count > 0)
         {
             Debug.Log(gameObject.name);
             GameObject temp = Instantiate(pursePrefab, purseCarryPoint);
             temp.transform.position = new Vector3(purseCarryPoint.position.x + (float)purseList.Count / 4, purseCarryPoint.position.y, purseCarryPoint.position.z);
             purseList.Add(temp);
-            CustomerTriggerEventManager.reyonManager.RemoveLast();
-            CustomerTriggerEventManager.reyonManager.aimed = false;
+            customerTriggerEventManager.reyonManager.RemoveLast();
+            customerTriggerEventManager.reyonManager.aimed = false;
             // objeyi reyondan aldýn artýk kasaya git ve satýn al
             CustomerMovement customerMovement = GetComponent<CustomerMovement>();
             customerMovement.MoveToBuy();

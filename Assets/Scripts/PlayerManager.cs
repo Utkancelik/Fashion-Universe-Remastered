@@ -32,9 +32,10 @@ public class PlayerManager : MonoBehaviour
     }
     public void GivePurse()
     {
-        if (purseList.Count > 0 && PlayerTriggerEventManager.reyonManager.purseList.Count < 3)
+        PlayerTriggerEventManager playerTriggerEventManager = GetComponent<PlayerTriggerEventManager>();
+        if (purseList.Count > 0 && playerTriggerEventManager.reyonManager.purseList.Count < 3)
         {
-            PlayerTriggerEventManager.reyonManager.GetPurse();
+            playerTriggerEventManager.reyonManager.GetPurse();
             RemoveLast();
         }
     }
