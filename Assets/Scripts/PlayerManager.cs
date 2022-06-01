@@ -26,14 +26,14 @@ public class PlayerManager : MonoBehaviour
         if (purseList.Count < purseLimit)
         {
             GameObject temp = Instantiate(pursePrefab, collectPoint);
-            temp.transform.position = new Vector3(collectPoint.position.x + (float)purseList.Count/4, collectPoint.position.y, collectPoint.position.z);
+            temp.transform.position = new Vector3(collectPoint.position.x, collectPoint.position.y - (float)purseList.Count /8, collectPoint.position.z);
             purseList.Add(temp);
         }      
     }
     public void GivePurse()
     {
         PlayerTriggerEventManager playerTriggerEventManager = GetComponent<PlayerTriggerEventManager>();
-        if (purseList.Count > 0 && playerTriggerEventManager.reyonManager.purseList.Count < 3)
+        if (purseList.Count > 0 && playerTriggerEventManager.reyonManager.purseList.Count < playerTriggerEventManager.reyonManager.purseLimit)
         {
             playerTriggerEventManager.reyonManager.GetPurse();
             RemoveLast();

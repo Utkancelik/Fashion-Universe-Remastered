@@ -10,8 +10,10 @@ public class CustomerMovement : MonoBehaviour
     public int reyonAmount;
     public Transform movePoint;
     public bool iHaveTarget,iHaveUrun;
+    public Animator animator;
     private void Start()
     {
+        animator = GetComponent<Animator> ();
         reyonAmount = GameObject.FindGameObjectsWithTag("ReyonArea").Length;
         for (int i = 0; i < reyonAmount; i++)
         {
@@ -28,12 +30,14 @@ public class CustomerMovement : MonoBehaviour
     {
         GameObject kasa = GameObject.FindGameObjectWithTag("PayArea");
         agent.SetDestination(kasa.transform.position);
+        animator.SetBool("isWalking", true);
     }
 
     public void MoveToDie()
     {
         GameObject door = GameObject.FindGameObjectWithTag("DoorArea");
         agent.SetDestination(door.transform.position);
+        animator.SetBool("isWalking", true);
     }
 
     public void FindTargetAndGo()
@@ -46,6 +50,7 @@ public class CustomerMovement : MonoBehaviour
                 iHaveTarget = true;
                 reyonList[rand].GetComponent<ReyonManager>().aimed = true;
                 agent.SetDestination(reyonList[rand].transform.position);
+                animator.SetBool("isWalking", true);
             }
         }
     }

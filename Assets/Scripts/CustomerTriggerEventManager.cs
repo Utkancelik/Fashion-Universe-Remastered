@@ -22,6 +22,7 @@ public class CustomerTriggerEventManager : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(1);
             if (isTaking)
             {
                 OnPurseTake();
@@ -30,7 +31,7 @@ public class CustomerTriggerEventManager : MonoBehaviour
             {
                 OnPurseGive();
             }          
-            yield return new WaitForSeconds(1);
+            
         }
     }
 
