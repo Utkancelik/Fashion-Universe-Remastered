@@ -28,7 +28,7 @@ public class BuyManager : MonoBehaviour
 
     public void IncreaseMoney()
     {
-        PayAreaManager payAreaManager = GetComponentInParent<PayAreaManager>();
+        PayAreaManager payAreaManager = GameObject.Find("Cashier Desk").GetComponent<PayAreaManager>();
         int moneyAmount = payAreaManager.moneyList.Count;
         totalMoney += moneyAmount * 5;
         payAreaManager.DestroyMoney();

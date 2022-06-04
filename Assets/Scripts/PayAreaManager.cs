@@ -13,7 +13,7 @@ public class PayAreaManager : MonoBehaviour
     {
         int rowCount = 5;
         GameObject temp = Instantiate(moneyPrefab);
-        temp.transform.position = new Vector3(moneyPoint.position.x, moneyPoint.position.y + ((float)moneyList.Count%rowCount) / 25, moneyPoint.position.z + (moneyList.Count / rowCount)/5.0f);
+        temp.transform.position = new Vector3(moneyPoint.position.x, moneyPoint.position.y + ((float)moneyList.Count%rowCount) / 12.5f, moneyPoint.position.z + (moneyList.Count / rowCount)/5.0f);
         moneyList.Add(temp);
     }
     public void DestroyMoney()

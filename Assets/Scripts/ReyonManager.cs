@@ -13,12 +13,17 @@ public class ReyonManager : MonoBehaviour
     public Text purseNumText;
     private void Start()
     {
+        GetPurse();
+        GetPurse();
+        GetPurse();
+        GetPurse();
         purseNumText.gameObject.SetActive(false);
     }
     public void GetPurse()
     {          
         GameObject temp = Instantiate(pursePrefab, reyonPoint);
-        temp.transform.position = new Vector3(reyonPoint.position.x, reyonPoint.position.y, reyonPoint.position.z + (float)purseList.Count / 5);
+        temp.transform.position = new Vector3(reyonPoint.position.x - (float)purseList.Count / 8f, reyonPoint.position.y, reyonPoint.position.z + (float)purseList.Count / 4);
+        //temp.transform.position = reyonPoint.position +  new Vector3( (float)purseList.Count / 5, 0, -(float)purseList.Count / 5 );
         purseList.Add(temp);
     }
     public void RemoveLast()

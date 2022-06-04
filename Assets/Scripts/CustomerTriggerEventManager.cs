@@ -46,8 +46,11 @@ public class CustomerTriggerEventManager : MonoBehaviour
         {
             isGiving = true;
             payAreaManager = other.gameObject.GetComponent<PayAreaManager>();
-        }
-        if (other.gameObject.CompareTag("DoorArea"))
+        }     
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("ExitDoor"))
         {
             CustomerGenerator customerGenerator = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CustomerGenerator>();
             customerGenerator.DieCustomer(gameObject);

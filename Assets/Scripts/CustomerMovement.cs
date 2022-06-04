@@ -35,7 +35,7 @@ public class CustomerMovement : MonoBehaviour
 
     public void MoveToDie()
     {
-        GameObject door = GameObject.FindGameObjectWithTag("DoorArea");
+        GameObject door = GameObject.FindGameObjectWithTag("ExitDoor");
         agent.SetDestination(door.transform.position);
         animator.SetBool("isWalking", true);
     }

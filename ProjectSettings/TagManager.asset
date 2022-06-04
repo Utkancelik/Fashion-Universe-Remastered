@@ -9,9 +9,9 @@ TagManager:
   - PurseCollectArea
   - ReyonArea
   - PayArea
-  - DoorArea
   - TakeMoneyArea
   - UnlockArea
+  - ExitDoor
   layers:
   - Default
   - TransparentFX
